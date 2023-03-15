@@ -1,9 +1,44 @@
 import './App.css';
 import './styles.scss';
 import React from 'react'; //Check for unused , { useState, useEffect, useReducer, createContext, useContext }
-import { Routes, Route, Link, Outlet, useParams } from 'react-router-dom'; //Check for unused
+import { Routes, Route, Outlet, useParams } from 'react-router-dom'; //Check for unused
 import useApi from './components/useApi';
+import Nav from './components/navbar';
+import searchIcon from './components/icons/search-icon.png';
+// import styled from 'styled-components';
 
+// const Button = styled.button`
+//   border: 0;
+//   background: none;
+//   background-color: lightcoral;
+// `;
+
+// const Input = styled.input`
+//   border: solid 2px #5B7A70;
+//   border-radius: 5px;
+// `;
+
+function Header() {
+  return (
+    <header>
+      <Nav />
+    </header>
+  );
+}
+
+function Footer() {
+  return <footer>© Dina Olufsen 2023</footer>;
+}
+
+function Layout() {
+  return (
+    <div>
+      <Header />
+        <Outlet />
+      <Footer />
+    </div>
+  );
+}
 
 function Home() {
   const { data, isLoading, isError } = useApi(
@@ -20,14 +55,20 @@ function Home() {
 
   console.log(data); //Remove
 
-  return <div>
-      <div>
-        Home
+  return <main id='home'>
+      <div className='container'>
+        <h1 className='home-heading'>
+          Homepage
+        </h1>
+        <div className='searchInput'>
+          <img src={searchIcon} alt='Search icon'/>
+          <input aria-label='search input' />
+        </div>
+        <div>
+          Data loaded
+        </div>
       </div>
-      <div>
-        Data loaded
-      </div>
-    </div>;
+    </main>;
 }
 
 function Contact() {
@@ -49,47 +90,6 @@ function Product() {
 
 function RouteNotFound() {
   return <div>Page not found</div>;
-}
-
-function Nav() {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-        <li>
-          <Link to="/cart">Cart</Link>
-        </li>
-      </ul>
-    </nav>
-  );
-}
-
-function Header() {
-  return (
-    <header>
-      <div>Header with Logo and nav</div>
-      <Nav />
-    </header>
-  );
-}
-
-function Footer() {
-  return <footer>Website footer</footer>;
-}
-
-function Layout() {
-  return (
-    <div>
-      <Header />
-        <Outlet />
-      <Footer />
-    </div>
-  );
 }
 
 function App() {
