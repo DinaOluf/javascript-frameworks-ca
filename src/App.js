@@ -1,7 +1,7 @@
 import './App.css';
 import './styles.scss';
 import React from 'react'; //Check for unused , { useState, useEffect, useReducer, createContext, useContext }
-import { Routes, Route, Outlet, useParams } from 'react-router-dom'; //Check for unused
+import { Routes, Route, Link, Outlet, useParams } from 'react-router-dom'; //Check for unused
 import useApi from './components/useApi';
 import Nav from './components/navbar';
 import searchIcon from './components/icons/search-icon.png';
@@ -40,22 +40,48 @@ function Layout() {
   );
 }
 
+
 function Home() {
   const { data, isLoading, isError } = useApi(
     'https://api.noroff.dev/api/v1/online-shop',
   );
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return <main id='home'>
+    <div className='container'>
+      <h1 className='home-heading'>
+        Homepage
+      </h1>
+      <div className='searchInput'>
+        <img src={searchIcon} alt='Search icon'/>
+        <input aria-label='search input' />
+      </div>
+      <div className='loading' aria-label='loading'>
+      </div>
+    </div>
+  </main>;
   }
 
   if (isError) {
-    return <div>Error</div>;
+    return <main id='home'>
+    <div className='container'>
+      <h1 className='home-heading'>
+        Homepage
+      </h1>
+      <div className='searchInput'>
+        <img src={searchIcon} alt='Search icon'/>
+        <input aria-label='search input' />
+      </div>
+      <div className='error'>
+        Error! Please refresh.
+      </div>
+    </div>
+  </main>;
   }
 
   console.log(data); //Remove
 
-  return <main id='home'>
+  return (<main id='home'>
       <div className='container'>
         <h1 className='home-heading'>
           Homepage
@@ -64,11 +90,27 @@ function Home() {
           <img src={searchIcon} alt='Search icon'/>
           <input aria-label='search input' />
         </div>
-        <div>
-          Data loaded
+        <div className='products-container'>
+          {data.map((data) => (
+            <Link key={data.id} to={`/product/${data.id}`}>
+              <div className='product-img-wrap'>
+                <img src={data.imageUrl} className='product-img' alt='Product' />
+              </div>
+              <div>
+                <div className='product-title'>{data.title}</div>
+                <div className='product-price'>
+                  {
+                    data.discountedPrice === data.price
+                      ? data.price+' kr'
+                      : <span className='discount'>{data.discountedPrice} kr ({(data.price - data.discountedPrice).toFixed(2)} OFF)</span>
+                    }
+                  </div> 
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
-    </main>;
+    </main>);
 }
 
 function Contact() {
@@ -102,6 +144,8 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="*" element={<RouteNotFound />} />
+          {/* <Route path="checkout" element={<Checkout />} />
+          <Route path="success" element={<Success />} /> */}
         </Route>
       </Routes>
     </div>
