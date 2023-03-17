@@ -101,8 +101,8 @@ function Home() {
                 <div className='product-price'>
                   {
                     data.discountedPrice === data.price
-                      ? data.price+' kr'
-                      : <span className='discount'>{data.discountedPrice} kr ({(data.price - data.discountedPrice).toFixed(2)} OFF)</span>
+                      ? data.price+',-'
+                      : <span className='discount'>{data.discountedPrice},- <span className='discount-off'>({(data.price - data.discountedPrice).toFixed(2)},- OFF)</span></span>
                     }
                   </div> 
               </div>

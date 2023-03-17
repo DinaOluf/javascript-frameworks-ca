@@ -176,6 +176,11 @@
                 & .discount {
                     color: #8A4343;
                     font-weight: bold;
+
+                    & .discount-off {
+                        font-size: 0.8em;
+                        font-weight: normal;
+                    }
                 }
             }
         }
