@@ -1,10 +1,11 @@
 import './App.css';
 import './styles.scss';
+import searchIcon from './components/icons/search-icon.png';
 import React from 'react'; //Check for unused , { useState, useEffect, useReducer, createContext, useContext }
 import { Routes, Route, Link, Outlet, useParams } from 'react-router-dom'; //Check for unused
 import useApi from './components/useApi';
 import Nav from './components/navbar';
-import searchIcon from './components/icons/search-icon.png';
+import Search from './components/search';
 // import styled from 'styled-components';
 
 // const Button = styled.button`
@@ -16,6 +17,15 @@ import searchIcon from './components/icons/search-icon.png';
 // const Input = styled.input`
 //   border: solid 2px #5B7A70;
 //   border-radius: 5px;
+// `;
+
+// SearchProduct = styled.input`
+//     height: 85%;
+//     width: 100%;
+//     border: none;
+//     border-radius: 5px;
+//     font-size: 1.2em;
+//     font-family: 'Times New Roman', Times, serif;
 // `;
 
 function Header() {
@@ -46,16 +56,18 @@ function Home() {
     'https://api.noroff.dev/api/v1/online-shop',
   );
 
+
+
   if (isLoading) {
     return <main id='home'>
     <div className='container'>
       <h1 className='home-heading'>
         Homepage
       </h1>
-      <div className='searchInput'>
+      {/* <div className='search-input'>
         <img src={searchIcon} alt='Search icon'/>
         <input aria-label='search input' />
-      </div>
+      </div> */}
       <div className='loading' aria-label='loading'>
       </div>
     </div>
@@ -68,7 +80,7 @@ function Home() {
       <h1 className='home-heading'>
         Homepage
       </h1>
-      <div className='searchInput'>
+      <div className='search-input'>
         <img src={searchIcon} alt='Search icon'/>
         <input aria-label='search input' />
       </div>
@@ -80,15 +92,16 @@ function Home() {
   }
 
   console.log(data); //Remove
+  
 
   return (<main id='home'>
       <div className='container'>
         <h1 className='home-heading'>
           Homepage
         </h1>
-        <div className='searchInput'>
+        <div className='search-input'>
           <img src={searchIcon} alt='Search icon'/>
-          <input aria-label='search input' />
+          <Search />
         </div>
         <div className='products-container'>
           {data.map((data) => (

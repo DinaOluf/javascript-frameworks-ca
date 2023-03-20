@@ -1,17 +1,56 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
+import useApi from "./useApi";
 
-const data = [{id:1}, {id:2}];
+function Search () { 
+    
+    const { data, isLoading, isError } = useApi(
+        'https://api.noroff.dev/api/v1/online-shop',
+      );
 
-function Search (searchInput, onSearchInputChange) { 
+      const [searchInput, setSearchInput] = useState('');
+      const [filteredProducts, setFilteredProducts] = useState([]);
+    
+      if (isLoading) {
+        console.log("loading")
+      }
+    
+      if (isError) {
+        console.log("error")
+      }
+    
+      function onSearchInputChange(searchValue) {
+        setSearchInput(searchValue);
+    
+        const results = data.filter((product) => {
+          console.log(product.title)
+          console.log(searchValue)
+  
+          return product.title.toLowerCase().includes(searchValue.toLowerCase());
+    });
+    setFilteredProducts(results);
+        console.log(results); 
+    }
+
+    //   console.log(data); //Remove
+
     function onInputChange(event) {
         onSearchInputChange(event.currentTarget.value);
     }
 
     return (<div>
         <input onChange={onInputChange} value={searchInput} />
-        {data.map((item) => (
-            <div>render data</div>
-        ))}
+        {
+            searchInput !== ``
+            ? <ul className="search-list">
+                {filteredProducts.map((item) => (
+                    <li>
+                        <Link key={item.id} to={'/product/'+item.id}>{item.title}</Link>
+                    </li>
+                ))}
+                </ul>
+            : ``
+        }
     </div>
     );
 }
