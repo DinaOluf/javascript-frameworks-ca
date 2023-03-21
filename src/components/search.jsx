@@ -23,9 +23,7 @@ function Search () {
         setSearchInput(searchValue);
     
         const results = data.filter((product) => {
-          console.log(product.title)
-          console.log(searchValue)
-  
+
           return product.title.toLowerCase().includes(searchValue.toLowerCase());
     });
     setFilteredProducts(results);
@@ -44,8 +42,13 @@ function Search () {
             searchInput !== ``
             ? <ul className="search-list">
                 {filteredProducts.map((item) => (
-                    <li>
-                        <Link key={item.id} to={'/product/'+item.id}>{item.title}</Link>
+                    <li key={item.id}>
+                        <Link to={'/product/'+item.id}>
+                            <div className="mini-img">
+                                <img src={item.imageUrl} alt='Product' />
+                            </div>
+                            <div>{item.title}</div>
+                        </Link>
                     </li>
                 ))}
                 </ul>

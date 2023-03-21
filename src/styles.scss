@@ -46,6 +46,7 @@
             margin: 0 3rem 0 3rem;
             color: $white;
             font-size: 2em;
+            position: relative;
 
             & :hover {
                 text-decoration: underline;
@@ -53,6 +54,22 @@
             
             & img {
                 max-width: 3rem;
+            }
+
+            & #cartCount {
+                position: absolute;
+                top: 1rem;
+                right: -0.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #8A4343;
+                height: 1.7rem;
+                width: 1.7rem;
+                border-radius: 50%;
+                font-size: 0.8em;
+                font-family: 'Times New Roman', Times, serif;
+                text-decoration: none;
             }
         }
    
@@ -82,6 +99,7 @@
        flex-direction: column;
        align-items: center;
        margin-top: 2rem;
+       margin-bottom: 2rem;
 
         & .home-heading {
             border: 0; 
@@ -113,6 +131,7 @@
             }
         }
 
+        //HOME PAGE
         & .search-input {
             position: relative;
             border: solid 2px $primary;
@@ -149,12 +168,27 @@
                     list-style: none;
 
                     & a {
-                        display: block;
+                        display: flex;
+                        align-items: center;
                         height: 100%;
                         padding: 0.5rem;
                         background-color:#ffffffbb;
                         color: $black;
                         text-decoration: none;
+
+                        & .mini-img {
+                            height: 3rem;
+                            width: 3rem;
+                            overflow: hidden;
+                            margin-right: 1rem;
+
+                            & img {
+                                object-fit: cover;
+                                min-width: 100%;
+                                max-width: 100%;
+                                min-height: 100%;
+                            }
+                        }
                     }
                 }
             }
@@ -196,13 +230,79 @@
                 color: $black;
 
                 & .discount {
-                    color: #8A4343;
+                    color: $secondary;
                     font-weight: bold;
 
                     & .discount-off {
                         font-size: 0.8em;
                         font-weight: normal;
                     }
+                }
+            }
+        }
+
+        //PRODUCT PAGE
+        & .product-info {
+            width: 100%;
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+
+            & .product-image {
+                width: 24rem;
+                height: 24rem;
+                overflow: hidden;
+
+                & img {
+                    object-fit: cover;
+                    min-width: 100%;
+                    max-width: 100%;
+                    min-height: 100%;
+                }
+            }
+
+            & p {
+                font-size: 1.2em;
+            }
+
+            & .product-price {
+                font-size: 1.2rem;
+                color: $black;
+                font-weight: bold;
+                margin-bottom: 1rem;
+
+                & .discount {
+                    color: $secondary;
+                    font-weight: bold;
+
+                    & .discount-off {
+                        font-size: 0.9em;
+                        font-weight: normal;
+                    }
+                }
+            }
+        }
+
+        & .review-heading {
+            font-size: 1.8em;
+            align-self: start;
+            padding: 1rem 0;
+            margin: 0;
+        }
+
+        & .review-container {
+            width: 100%;
+
+            & .reviews {
+                border-top: solid 1px black;
+                padding: 1rem 0 1rem 0;
+
+                & h3, p {
+                    margin-bottom: 0.5rem;
+                }
+
+                & div {
+                    font-weight: bold;
                 }
             }
         }

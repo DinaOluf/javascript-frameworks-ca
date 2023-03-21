@@ -2,10 +2,13 @@ import './App.css';
 import './styles.scss';
 import searchIcon from './components/icons/search-icon.png';
 import React from 'react'; //Check for unused , { useState, useEffect, useReducer, createContext, useContext }
-import { Routes, Route, Link, Outlet, useParams } from 'react-router-dom'; //Check for unused
+import { Routes, Route, Link, Outlet } from 'react-router-dom'; //Check for unused
 import useApi from './components/useApi';
 import Nav from './components/navbar';
 import Search from './components/search';
+import ProductPage from './components/product';
+import CartPage from './components/cart';
+import ContactPage from './components/contact';
 // import styled from 'styled-components';
 
 // const Button = styled.button`
@@ -89,10 +92,7 @@ function Home() {
       </div>
     </div>
   </main>;
-  }
-
-  console.log(data); //Remove
-  
+  }  
 
   return (<main id='home'>
       <div className='container'>
@@ -114,7 +114,7 @@ function Home() {
                 <div className='product-price'>
                   {
                     data.discountedPrice === data.price
-                      ? data.price+',-'
+                      ? data.discountedPrice+',-'
                       : <span className='discount'>{data.discountedPrice},- <span className='discount-off'>({(data.price - data.discountedPrice).toFixed(2)},- OFF)</span></span>
                     }
                   </div> 
@@ -127,20 +127,16 @@ function Home() {
 }
 
 function Contact() {
-  return <div>Contact</div>;
+  return <ContactPage />;
 }
 
 function Cart() {
-  return <div>Cart</div>;
+  return <CartPage />;
 }
 
-
 function Product() {
-  let params = useParams();
-  // console.log(params);
-  // Logs the id of whichever product page you are on e.g.
-  // {id: '1'} or {id: '2'}
-  return <div>Individual product page: {params.id}</div>;
+
+  return <ProductPage />;
 }
 
 function RouteNotFound() {

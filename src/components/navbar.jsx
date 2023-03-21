@@ -21,6 +21,7 @@ function Nav() {
           </li>
           <li>
             <Link className='navLink' to="/cart">
+              <div id='cartCount'>0</div>
                 <img src={cartIcon} alt='Cart icon' />
                 <span>Cart</span>
             </Link>
