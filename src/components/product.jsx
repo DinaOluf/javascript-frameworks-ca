@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import useApi from "./useApi";
 import styled from "styled-components";
+import { useCart } from "./useCart";
 
 const Button = styled.button`
     font-family: AmaticSC, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -52,6 +53,15 @@ function ProductPage() {
     
       console.log(data); //Remove
       const reviews = data.reviews;
+
+      // function CartProduct ({
+      //   product: { id, title, description, imageUrl, price, discountedPrice },
+      // }) {
+      //   const {addToCart} = useCart();
+      //   function onAddToCartButtonClick() {
+      //     addToCart(id);
+      //   }
+      // }
 
     return (
         <main id='product'>
