@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import useApi from "./useApi";
+import useApi from "../useApi";
 import styled from "styled-components";
-import { useCart } from "./useCart";
+import { useCart } from "../useCart";
 
 const Button = styled.button`
     font-family: AmaticSC, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -20,7 +20,14 @@ const Button = styled.button`
 `;
 
 function ProductPage() {
-    let params = useParams();
+  const { cart, addToCart } = useCart();
+  let params = useParams();
+
+console.log(cart); //REMOVE
+
+function onAddToCartClick(e) {
+  addToCart(e)
+}
 
     const { data, isLoading, isError } = useApi(
         'https://api.noroff.dev/api/v1/online-shop/'+params.id
@@ -50,18 +57,9 @@ function ProductPage() {
         </div>
       </main>;
       }
-    
-      console.log(data); //Remove
+  
       const reviews = data.reviews;
-
-      // function CartProduct ({
-      //   product: { id, title, description, imageUrl, price, discountedPrice },
-      // }) {
-      //   const {addToCart} = useCart();
-      //   function onAddToCartButtonClick() {
-      //     addToCart(id);
-      //   }
-      // }
+      
 
     return (
         <main id='product'>
@@ -79,7 +77,7 @@ function ProductPage() {
                             : <span className='discount'>{data.discountedPrice},- <span className='discount-off'>({(data.price - data.discountedPrice).toFixed(2)},- OFF)</span></span>
                             }
                         </div>
-                        <Button className="buttons">Add to Cart</Button>
+                        <Button className="buttons" onClick={() => onAddToCartClick(data)}>Add to Cart</Button>
                     </div>
                 </div>
                 <h2 className="review-heading">Reviews</h2>

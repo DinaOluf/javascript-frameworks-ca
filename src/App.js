@@ -6,9 +6,9 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom'; //Check for unus
 import useApi from './components/useApi';
 import Nav from './components/navbar';
 import Search from './components/search';
-import ProductPage from './components/product';
-import CartPage from './components/cart';
-import ContactPage from './components/contact';
+import ProductPage from './components/pages/product';
+import CartPage from './components/pages/cart';
+import ContactPage from './components/pages/contact';
 // import styled from 'styled-components';
 
 // const Button = styled.button`
@@ -135,7 +135,6 @@ function Cart() {
 }
 
 function Product() {
-
   return <ProductPage />;
 }
 

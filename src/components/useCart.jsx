@@ -10,7 +10,7 @@ const useCartStore = create((set) => ({
   fetchProducts: async (url) => {
     set(() => ({ loading: true }));
     try {
-      const response = await fetch(url);
+      const response = await fetch('https://api.noroff.dev/api/v1/online-shop/');
       const json = await response.json();
       console.log(json);
       set((state) => ({ products: (state.products = json), isLoading: false }));
@@ -29,9 +29,18 @@ function useCart() {
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clearCart);
 
+  const count = document.querySelector("#cartCount");
+
   function addToCart(id) {
     console.log('Add to cart', id);
     addProductToCart(id);
+
+    count.innerHTML = cart.length + 1;
+  }
+
+   function clearTheCart() {
+    clearCart();
+    count.innerHTML = 0;
   }
 
   return {
@@ -40,8 +49,8 @@ function useCart() {
     isLoading,
     hasErrors,
     addToCart,
-    clearCart,
-    fetchProducts,
+    clearTheCart,
+    fetchProducts
   };
 }
 
