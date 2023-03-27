@@ -306,6 +306,67 @@
                 }
             }
         }
+
+        // CART PAGE
+        & .cart-wrap {
+            width: 100%;
+
+            & .cart-list-wrap {
+                border: solid 1px $black;
+
+
+                & ul {
+                    padding: 0;
+                    max-height: 32rem;
+                    overflow-y: scroll;
+
+                    & li {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 1rem;
+                        border-bottom: solid 1px $black;
+
+                        & .cart-images {
+                                width: 5rem;
+                                height: 5rem;
+                                overflow: hidden;
+
+                                & img {
+                                    object-fit: cover;
+                                    min-width: 100%;
+                                    max-width: 100%;
+                                    min-height: 100%;
+                                }
+                        }
+
+                        & h2 {
+                            margin-left: 1rem;
+                            margin-bottom: 0;
+                            margin-right: auto;
+                        }
+                    }
+                }
+
+                & .empty-cart-msg {
+                    text-align: center;
+                    padding: 2rem;
+                    margin-bottom: 1rem;
+                    border-bottom: solid 1px $black;
+                }
+                
+                & .total,
+                .buttons-wrap {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 1rem 1rem 1rem;
+                }
+
+                & .total {
+                    font-weight: bold;
+                }
+            }
+        }
     }
   }
 

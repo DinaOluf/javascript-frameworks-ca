@@ -9,6 +9,7 @@ import Search from './components/search';
 import ProductPage from './components/pages/product';
 import CartPage from './components/pages/cart';
 import ContactPage from './components/pages/contact';
+import SuccessPage from './components/pages/success';
 // import styled from 'styled-components';
 
 // const Button = styled.button`
@@ -138,6 +139,10 @@ function Product() {
   return <ProductPage />;
 }
 
+function Success() {
+  return <SuccessPage />;
+}
+
 function RouteNotFound() {
   return <div>Page not found</div>;
 }
@@ -152,8 +157,7 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="*" element={<RouteNotFound />} />
-          {/* <Route path="checkout" element={<Checkout />} />
-          <Route path="success" element={<Success />} /> */}
+          <Route path="success" element={<Success />} />
         </Route>
       </Routes>
     </div>

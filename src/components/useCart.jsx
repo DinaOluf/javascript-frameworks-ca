@@ -43,6 +43,15 @@ function useCart() {
     count.innerHTML = 0;
   }
 
+  // console.log(prices)
+  function findTotal () {
+    const prices = cart.map((cart) => (
+      cart.discountedPrice
+    ))
+    
+    return prices.reduce((a, b) => a + b, 0).toFixed(2);
+  }
+
   return {
     products,
     cart,
@@ -50,7 +59,8 @@ function useCart() {
     hasErrors,
     addToCart,
     clearTheCart,
-    fetchProducts
+    fetchProducts,
+    findTotal
   };
 }
 
