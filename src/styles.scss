@@ -370,6 +370,27 @@
     }
   }
 
+  #contact {
+    .container {
+        width: 30rem;
+
+        & .contact-heading {
+            align-self: start;
+        }
+
+        & form {
+            width: 100%;
+            font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+
+            & .contact-button {
+                align-self: center;
+            }
+        }
+    }
+  }
+
   footer {
     background-color: $primary;
     position: absolute;
