@@ -45,22 +45,22 @@ const Error = styled.p`
 const schema = yup
   .object({
     fullName: yup
-    .string('Please write your full name here')
+    .string()
     .min(3, 'Must contain more than 3 characters')
     .required('Please fill in this field')
     .typeError('Please write your full name here'),
     subject: yup
-    .string('Please write your subject here')
+    .string()
     .min(3, 'Must contain more than 3 characters')
     .required('Please fill in this field')
     .typeError('Please write your subject here'),
     email: yup
-      .string('Please enter a valid email address')
+      .string()
       .email('Please enter a valid email address')
       .required('Please enter a valid email address')
       .typeError('Please enter a valid email address'),
     body: yup
-      .string('Please write your message here')
+      .string()
       .min(3, 'Must contain more than 3 characters')
       .required('Please fill in this field')
       .typeError('Please write your message here'),
