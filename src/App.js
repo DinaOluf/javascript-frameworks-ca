@@ -1,7 +1,7 @@
 import './App.css';
 import './styles.scss';
-import React from 'react'; //Check for unused , { useState, useEffect, useReducer, createContext, useContext }
-import { Routes, Route, Outlet } from 'react-router-dom'; //Check for unused
+import React from 'react'; 
+import { Routes, Route, Outlet } from 'react-router-dom'; 
 import Nav from './components/navbar';
 import HomePage from './components/pages/index';
 import ProductPage from './components/pages/product';
