@@ -12,7 +12,6 @@ const useCartStore = create((set) => ({
     try {
       const response = await fetch('https://api.noroff.dev/api/v1/online-shop/');
       const json = await response.json();
-      console.log(json);
       set((state) => ({ products: (state.products = json), isLoading: false }));
     } catch (error) {
       set(() => ({ hasErrors: true, isLoading: false }));
@@ -29,21 +28,20 @@ function useCart() {
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clearCart);
 
-  const count = document.querySelector("#cartCount");
-
-  function addToCart(id) {
-    console.log('Add to cart', id);
-    addProductToCart(id);
-
+  function addToCart(product) {
+    addProductToCart(product);
+    
+    const count = document.querySelector("#cartCount");
     count.innerHTML = cart.length + 1;
   }
 
    function clearTheCart() {
     clearCart();
+    const count = document.querySelector("#cartCount");
     count.innerHTML = 0;
+    window.localStorage.clear();
   }
 
-  // console.log(prices)
   function findTotal () {
     const prices = cart.map((cart) => (
       cart.discountedPrice
@@ -51,6 +49,7 @@ function useCart() {
     
     return prices.reduce((a, b) => a + b, 0).toFixed(2);
   }
+
 
   return {
     products,
@@ -63,5 +62,7 @@ function useCart() {
     findTotal
   };
 }
+
+
 
 export { useCart };

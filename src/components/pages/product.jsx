@@ -1,29 +1,12 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import useApi from "../useApi";
-import styled from "styled-components";
 import { useCart } from "../useCart";
-
-const Button = styled.button`
-    font-family: AmaticSC, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    background-color: #5B7A70;
-    border: solid 2px white;
-    border-radius: 5px;
-    font-size: 1.8em;
-    padding: 0.2rem 1rem;
-
-    :hover {
-    background-color:#000000;
-    cursor: pointer;
-}
-`;
+import { Button } from "../styles/product.styles";
 
 function ProductPage() {
-  const { cart, addToCart } = useCart();
+  const { addToCart } = useCart();
   let params = useParams();
-
-console.log(cart); //REMOVE
 
 function onAddToCartClick(e) {
   addToCart(e)
@@ -59,8 +42,7 @@ function onAddToCartClick(e) {
       }
   
       const reviews = data.reviews;
-      
-
+    
     return (
         <main id='product'>
             <div className='container'>
@@ -82,7 +64,7 @@ function onAddToCartClick(e) {
                 </div>
                 <h2 className="review-heading">Reviews</h2>
                 { 
-                    reviews 
+                    reviews
                     ?   reviews.map((review) => (
                             <div className="review-container" key={review.id}>
                                 <div className="reviews">

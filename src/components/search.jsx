@@ -4,19 +4,15 @@ import useApi from "./useApi";
 
 function Search () { 
     
-    const { data, isLoading, isError } = useApi(
+    const { data, isError } = useApi(
         'https://api.noroff.dev/api/v1/online-shop',
       );
 
       const [searchInput, setSearchInput] = useState('');
       const [filteredProducts, setFilteredProducts] = useState([]);
     
-      if (isLoading) {
-        console.log("loading")
-      }
-    
       if (isError) {
-        console.log("error")
+        return <div>An error occurred! Please refresh.</div>
       }
     
       function onSearchInputChange(searchValue) {
@@ -27,10 +23,7 @@ function Search () {
           return product.title.toLowerCase().includes(searchValue.toLowerCase());
     });
     setFilteredProducts(results);
-        console.log(results); 
     }
-
-    //   console.log(data); //Remove
 
     function onInputChange(event) {
         onSearchInputChange(event.currentTarget.value);
@@ -59,27 +52,3 @@ function Search () {
 }
 
 export default Search; 
-
-
-// in App()
-
-// const [products, setProducts] = useState(data);
-// const [searchInput, setSearchInput] = useState('');
-// const [filteredProducts, setFilteredProducts] = useState([]);
-
-// function onSearchInputChange(searchValue) {
-//     setSearchInput(searchValue);
-
-//     const results = data.filter((product) => {
-//         return product.title.toLowerCase().includes(searchValue.toLowerCase())
-//     });
-//     setFilteredProducts(results);
-//     console.log(results); 
-// }
-
-// App() inside the return
-
-// <Search searchInput={searchInput} onSearchInputChange={onSearchInputChange}setSearchInput />
-// {filteredProducts.map((product) => (
-// <div key={product.id}>{product.title}</div>
-// )))

@@ -2,45 +2,7 @@ import React from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import styled from "styled-components";
-
-const Input = styled.input`
-    height: 1.5rem;
-    width: 100%;
-    border: solid 1px black;
-    border-radius: 5px;
-    padding: 0.2rem 0.5rem;
-`;
-
-const TextArea = styled.textarea`
-    height: 1.5rem;
-    width: 100%;
-    border: solid 1px black;
-    border-radius: 5px;
-    padding: 0.2rem 0.5rem;
-    min-height: 8rem;
-    resize: none;
-`;
-
-const Button = styled.button`
-    font-family: AmaticSC, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    background-color: #5B7A70;
-    border: solid 2px white;
-    border-radius: 5px;
-    font-size: 1.8em;
-    padding: 0.2rem 1rem;
-    width: 15rem;
-
-    :hover {
-    background-color:#000000;
-    cursor: pointer;
-}
-`;
-
-const Error = styled.p`
-    color: #8A4343;
-`;
+import { Input, TextArea, Button, Error } from "../styles/contact.styles";
 
 const schema = yup
   .object({
