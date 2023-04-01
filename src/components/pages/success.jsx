@@ -1,11 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import styled from "styled-components";
+import { BackLink } from "../styles/success.styles";
 
 function SuccessPage() {
-  const BackLink = styled(Link)`
-    color: #5B7A70;
-  `;
 
     return (<main id='success'>
       <div className='container'>

@@ -1,49 +1,13 @@
 import React from "react";
-// import useApi from "../useApi";
-import styled from "styled-components";
 import { useCart } from "../useCart";
-import { Link } from 'react-router-dom';
+import { ButtonLink, ButtonRed } from "../styles/cart.styles";
 
-
-const ButtonLink = styled(Link)`
-    font-family: AmaticSC, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    background-color: #5B7A70;
-    border: solid 2px white;
-    border-radius: 5px;
-    font-size: 1.8em;
-    padding: 0.2rem 1rem;
-    text-decoration: none;
-
-    :hover {
-    background-color:#000000;
-    cursor: pointer;
-}
-`;
-
-const ButtonRed = styled.button`
-    font-family: AmaticSC, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    background-color: #8A4343;
-    border: solid 2px white;
-    border-radius: 5px;
-    font-size: 1.8em;
-    padding: 0.2rem 1rem;
-
-    :hover {
-    background-color:#414141;
-    cursor: pointer;
-}
-`;
 
 function CartPage() {
   const { cart, clearTheCart, findTotal } = useCart();
 
-  console.log(cart); //REMOVE
-
   function onCheckoutClick() {
     clearTheCart();
-  console.log("cleared cart");
   }
 
   const total = findTotal();
