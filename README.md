@@ -1,4 +1,4 @@
-# [React Project](https://javascriptframeworks-react.netlify.app/) (First)
+# [React Project](https://javascriptframeworks-react.netlify.app/) 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d63b2ad9-2161-471c-aadc-df86504327ec/deploy-status)](https://app.netlify.com/sites/javascriptframeworks-react/deploys)
 
 ![react-project](https://github.com/DinaOluf/javascript-frameworks-ca/assets/91533917/282fe0b6-1380-4a37-b4dc-f9b3f343e10e)
