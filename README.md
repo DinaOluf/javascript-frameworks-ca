@@ -66,7 +66,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## License
 
-This project is licensed under the [Boost Software License - Version 1.0](https://www.boost.org/LICENSE_1_0.txt)
+This project is licensed under the [The Unlicense](https://choosealicense.com/licenses/unlicense/) License
 
 
 ## Acknowledgments
