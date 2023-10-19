@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useCart } from './useCart'; 
 import homeIcon from './icons/home-icon.png';
 import mailIcon from './icons/mail-icon.png';
 import cartIcon from './icons/cart-icon.png';
 
 function Nav() {
+  const { cart } = useCart();
+  useEffect(() => {
+    const count = document.querySelector("#cartCount");
+    count.innerHTML = cart.length;
+  });
+
     return (
       <nav>
         <div>
