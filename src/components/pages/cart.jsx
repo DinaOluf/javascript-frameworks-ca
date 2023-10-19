@@ -6,10 +6,6 @@ import { ButtonLink, ButtonRed } from "../styles/cart.styles";
 function CartPage() {
   const { cart, clearTheCart, findTotal } = useCart();
 
-  function onCheckoutClick() {
-    clearTheCart();
-  }
-
   const total = findTotal();
 
   return (
@@ -27,6 +23,7 @@ function CartPage() {
                     </div>
                     <h2>{cart.title}</h2>
                     <div className="cart-item-price">{cart.discountedPrice},-</div>
+                    {/* <div className="x" onClick={() => onRemoveFromCartClick(index)}>☒</div> */}
                   </li>
               ))}
               </ul>
@@ -34,7 +31,7 @@ function CartPage() {
           }
           <div className="total"><span>Total</span><span className="total-price">{total},-</span></div>
           <div className="buttons-wrap">
-            <ButtonRed onClick={onCheckoutClick}>Clear Cart</ButtonRed>
+            <ButtonRed onClick={() => clearTheCart()}>Clear Cart</ButtonRed>
             { total >= 0.01
               ? <ButtonLink to="/success" onClick={() => clearTheCart()}>Checkout</ButtonLink> 
               : <ButtonRed>Checkout</ButtonRed> 
